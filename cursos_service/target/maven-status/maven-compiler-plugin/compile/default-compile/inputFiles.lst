@@ -1,0 +1,11 @@
+C:\Users\jorge l\OneDrive\Escritorio\backend-cloud\cursos_service\src\main\java\org\example\microservice_courses\MicroserviceCoursesApplication.java
+C:\Users\jorge l\OneDrive\Escritorio\backend-cloud\cursos_service\src\main\java\org\example\microservice_courses\config\SwaggerConfig.java
+C:\Users\jorge l\OneDrive\Escritorio\backend-cloud\cursos_service\src\main\java\org\example\microservice_courses\Course\domain\CourseService.java
+C:\Users\jorge l\OneDrive\Escritorio\backend-cloud\cursos_service\src\main\java\org\example\microservice_courses\Professor\domain\ProfessorService.java
+C:\Users\jorge l\OneDrive\Escritorio\backend-cloud\cursos_service\src\main\java\org\example\microservice_courses\Course\domain\Course.java
+C:\Users\jorge l\OneDrive\Escritorio\backend-cloud\cursos_service\src\main\java\org\example\microservice_courses\Course\infrastructure\CourseRepository.java
+C:\Users\jorge l\OneDrive\Escritorio\backend-cloud\cursos_service\src\main\java\org\example\microservice_courses\Professor\infrastructure\ProfessorRepository.java
+C:\Users\jorge l\OneDrive\Escritorio\backend-cloud\cursos_service\src\main\java\org\example\microservice_courses\Professor\application\ProfessorController.java
+C:\Users\jorge l\OneDrive\Escritorio\backend-cloud\cursos_service\src\main\java\org\example\microservice_courses\Course\application\CourseController.java
+C:\Users\jorge l\OneDrive\Escritorio\backend-cloud\cursos_service\src\main\java\org\example\microservice_courses\Professor\domain\Professor.java
+C:\Users\jorge l\OneDrive\Escritorio\backend-cloud\cursos_service\src\main\java\org\example\microservice_courses\exceptions\ResourceNotFoundException.java

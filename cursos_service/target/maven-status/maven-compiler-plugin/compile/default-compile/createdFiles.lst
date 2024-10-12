@@ -1,0 +1,11 @@
+org\example\microservice_courses\Course\application\CourseController.class
+org\example\microservice_courses\Professor\infrastructure\ProfessorRepository.class
+org\example\microservice_courses\Course\domain\Course.class
+org\example\microservice_courses\Course\domain\CourseService.class
+org\example\microservice_courses\exceptions\ResourceNotFoundException.class
+org\example\microservice_courses\MicroserviceCoursesApplication.class
+org\example\microservice_courses\Professor\application\ProfessorController.class
+org\example\microservice_courses\Professor\domain\ProfessorService.class
+org\example\microservice_courses\Professor\domain\Professor.class
+org\example\microservice_courses\Course\infrastructure\CourseRepository.class
+com\tu_proyecto\config\SwaggerConfig.class
