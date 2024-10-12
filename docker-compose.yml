@@ -1,0 +1,108 @@
+version: '3'
+services:
+  # Microservicio de Estudiantes (Python + MySQL)
+  estudiantes_service:
+    build: ./estudiantes_service
+    container_name: estudiantes_service
+    environment:
+      - DATABASE_URL=mysql://user:password@db_estudiantes:3306/estudiantes_db
+    networks:
+      - my_network
+    depends_on:
+      - db_estudiantes
+    ports:
+      - "8001:8000"
+
+  # Base de datos MySQL para Estudiantes
+  db_estudiantes:
+    image: mysql:8.0
+    container_name: db_estudiantes
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: estudiantes_db
+    networks:
+      - my_network
+    volumes:
+      - estudiantes_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  # Microservicio de Cursos (Java + PostgreSQL)
+  cursos_service:
+    build: ./cursos_service
+    container_name: cursos_service
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db_cursos:5432/cursos_db
+      - SPRING_DATASOURCE_USERNAME=user
+      - SPRING_DATASOURCE_PASSWORD=password
+    networks:
+      - my_network
+    depends_on:
+      - db_cursos
+    ports:
+      - "8002:8080"
+
+  # Base de datos PostgreSQL para Cursos
+  db_cursos:
+    image: postgres:13
+    container_name: db_cursos
+    environment:
+      POSTGRES_DB: cursos_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    networks:
+      - my_network
+    volumes:
+      - cursos_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  # Microservicio de Evaluaciones (Node.js + MongoDB)
+  evaluaciones_service:
+    build: ./evaluaciones_service
+    container_name: evaluaciones_service
+    environment:
+      - MONGO_URL=mongodb://db_evaluaciones:27017/evaluaciones_db
+    networks:
+      - my_network
+    depends_on:
+      - db_evaluaciones
+    ports:
+      - "8003:3000"
+
+  # Base de datos MongoDB para Evaluaciones
+  db_evaluaciones:
+    image: mongo:4.4
+    container_name: db_evaluaciones
+    networks:
+      - my_network
+    volumes:
+      - evaluaciones_data:/data/db
+    ports:
+      - "27017:27017"
+
+  # Orquestador
+  orquestador:
+    build: ./orquestador
+    container_name: orquestador
+    environment:
+      - ESTUDIANTES_URL=http://estudiantes_service:8000
+      - CURSOS_URL=http://cursos_service:8080
+      - EVALUACIONES_URL=http://evaluaciones_service:3000
+    networks:
+      - my_network
+    depends_on:
+      - estudiantes_service
+      - cursos_service
+      - evaluaciones_service
+    ports:
+      - "8080:8080"
+
+networks:
+  my_network:
+    driver: bridge
+
+volumes:
+  estudiantes_data:
+  cursos_data:
+  evaluaciones_data:
