@@ -32,9 +32,11 @@ services:
     build: ./cursos_service
     container_name: cursos_service
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db_cursos:5432/cursos_db
-      - SPRING_DATASOURCE_USERNAME=user
-      - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://3.234.197.222:8006/MS_Cursos
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=utec
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.PostgreSQLDialect
     networks:
       - my_network
     depends_on:
@@ -48,8 +50,8 @@ services:
     container_name: db_cursos
     environment:
       POSTGRES_DB: cursos_db
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: utec
     networks:
       - my_network
     volumes:
@@ -106,3 +108,4 @@ volumes:
   estudiantes_data:
   cursos_data:
   evaluaciones_data:
+
